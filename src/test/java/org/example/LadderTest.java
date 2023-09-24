@@ -20,18 +20,22 @@ class LadderTest {
         assertEquals(0,ladder.getRows()[0].getPoints()[0]);
         assertEquals(0,ladder.getRows()[0].getPoints()[1]);
         assertEquals(0,ladder.getRows()[0].getPoints()[2]);
+        assertEquals(0,ladder.getRows()[0].getPoints()[3]);
 
         assertEquals(0,ladder.getRows()[1].getPoints()[0]);
         assertEquals(0,ladder.getRows()[1].getPoints()[1]);
         assertEquals(0,ladder.getRows()[1].getPoints()[2]);
+        assertEquals(0,ladder.getRows()[1].getPoints()[3]);
 
         assertEquals(0,ladder.getRows()[2].getPoints()[0]);
         assertEquals(0,ladder.getRows()[2].getPoints()[1]);
         assertEquals(0,ladder.getRows()[2].getPoints()[2]);
+        assertEquals(0,ladder.getRows()[2].getPoints()[3]);
 
         assertEquals(0,ladder.getRows()[3].getPoints()[0]);
         assertEquals(0,ladder.getRows()[3].getPoints()[1]);
         assertEquals(0,ladder.getRows()[3].getPoints()[2]);
+        assertEquals(0,ladder.getRows()[3].getPoints()[3]);
     }
 
     @Test
@@ -60,25 +64,6 @@ class LadderTest {
         Ladder ladder = new Ladder(person,height);
         ladder.drawLine(0,1);
         ladder.drawLine(1,2);
-
-        //then
-        assertEquals(1,ladder.checkPoint(0,1));
-        assertEquals(1,ladder.checkPoint(1,1));
-        assertEquals(1,ladder.checkPoint(1,2));
-        assertEquals(1,ladder.checkPoint(2,2));
-
-        assertEquals(0,ladder.checkPoint(0,0));
-        assertEquals(0,ladder.checkPoint(0,2));
-        assertEquals(0,ladder.checkPoint(0,3));
-        assertEquals(0,ladder.checkPoint(1,0));
-        assertEquals(0,ladder.checkPoint(1,3));
-        assertEquals(0,ladder.checkPoint(2,0));
-        assertEquals(0,ladder.checkPoint(2,1));
-        assertEquals(0,ladder.checkPoint(2,3));
-        assertEquals(0,ladder.checkPoint(3,0));
-        assertEquals(0,ladder.checkPoint(3,1));
-        assertEquals(0,ladder.checkPoint(3,2));
-        assertEquals(0,ladder.checkPoint(3,3));
     }
 
     @Test

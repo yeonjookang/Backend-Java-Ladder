@@ -1,26 +1,21 @@
 package org.example;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class Ladder {
     private Row[] rows;
-    private int personNum;
+    private int height;
 
-    public Ladder(int person, int height) {
-        this.rows = new Row[person];
-        this.personNum=person;
+    public Ladder(int personNum, int height) {
+        this.rows = new Row[height+1];
+        this.height=height;
 
         for(int i=0;i<rows.length;i++){
-            rows[i]= new Row(height);
+            rows[i]= new Row(personNum);
         }
     }
 
     public void drawLine(int x,int y){
-        validationDrawLine(x);
-
-        this.rows[x].setLine(y);
-        this.rows[x+1].setLine(y);
+        validationDrawLine(y);
+        this.rows[y].setLine(x);
     }
 
     public int run(int num){
@@ -28,49 +23,39 @@ public class Ladder {
         validationLadderPos(num);
         Position position=new Position(num);
 
-        while(position.getY()!=rows[0].getHeight()){
-
-            if(checkPoint(position.getX(),position.getY())==1){
-                if(position.getX()==0){
-                    //오른쪽 라인만 체크
-                    if(checkPoint(position.getX()+1, position.getY())==1){
-                        position.setX(position.getX()+1);
-                    }
-                } else if (position.getX()==rows.length-1) {
-                    //왼쪽 라인만 체크
-                    if(checkPoint(position.getX()-1, position.getY())==1){
-                        position.setX(position.getX()-1);
-                    }
-                } else{
-                    //양쪽 라인 다 체크
-                    if(checkPoint(position.getX()+1, position.getY())==1){
-                        position.setX(position.getX()+1);
-                    }else if(checkPoint(position.getX()-1, position.getY())==1){
-                        position.setX(position.getX()-1);
-                    }
-                }
-            }
-
+        while(position.getY()!=rows[0].getPersonNum()){
+            if(isRight(position)==1)
+                position.setX(position.getX()+1);
+            else if(isLeft(position)==1)
+                position.setX(position.getX()-1);
             //한 칸 내려가기
             position.setY(position.getY()+1);
-
         }
 
         return position.getX()+1;
     }
+    public int isRight(Position position){
+        if(rows[position.getY()].getPoints()[position.getX()]==Direction.RIGHT.getValue())
+            return 1;
+        else
+            return 0;
+    }
 
-    public int checkPoint(int x,int y){
-        return rows[x].getPoints()[y];
+    public int isLeft(Position position){
+        if(rows[position.getY()].getPoints()[position.getX()]==Direction.LEFT.getValue())
+            return 1;
+        else
+            return 0;
     }
 
     public void validationLadderPos(int num){
-        if(num<0 || num>personNum-1) {
+        if(num<0 || num>rows[0].getPersonNum()-1) {
             throw new RuntimeException("사다리 값 범위를 벗어났습니다.");
         }
     }
 
-    public void validationDrawLine(int num){
-        if(num<0 || num>personNum-2) {
+    public void validationDrawLine(int column){
+        if(column<=0 || column>=height) {
             throw new RuntimeException("사다리 라인을 그릴 수 없는 범위입니다.");
         }
     }
