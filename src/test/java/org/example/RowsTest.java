@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RowsTest {
 
-    Row row = new Row(3);
+    Row row = new Row(NaturalNumber.of(3));
 
     @Test
     public void Row_하나_생성(){

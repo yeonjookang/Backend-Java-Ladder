@@ -10,8 +10,8 @@ class LadderTest {
     @Test
     public void Ladder_하나_생성(){
         //given
-        int height=3;
-        int person=4;
+        NaturalNumber height=NaturalNumber.of(3);
+        NaturalNumber person=NaturalNumber.of(4);
 
         //when
         Ladder ladder = new Ladder(person,height);
@@ -41,8 +41,8 @@ class LadderTest {
     @Test
     public void 사다리게임_테스트(){
         //given
-        int height=3;
-        int person=4;
+        NaturalNumber height=NaturalNumber.of(3);
+        NaturalNumber person=NaturalNumber.of(4);
 
         //when
         Ladder ladder = new Ladder(person,height);
@@ -57,8 +57,8 @@ class LadderTest {
     @Test
     public void 사다리_라인생성후_테스트(){
         //given
-        int height=3;
-        int person=4;
+        NaturalNumber height=NaturalNumber.of(3);
+        NaturalNumber person=NaturalNumber.of(4);
 
         //when
         Ladder ladder = new Ladder(person,height);
@@ -69,8 +69,8 @@ class LadderTest {
     @Test
     public void 사다리게임_라인생성후_테스트(){
         //given
-        int height=3;
-        int person=4;
+        NaturalNumber height=NaturalNumber.of(3);
+        NaturalNumber person=NaturalNumber.of(4);
 
         //when
         Ladder ladder = new Ladder(person,height);

@@ -6,9 +6,9 @@ public class Row {
     private int[] points;
     private int personNum;
 
-    public Row(int personNum) {
-        this.personNum=personNum;
-        this.points = new int[personNum];
+    public Row(NaturalNumber personNum) {
+        this.personNum=personNum.getNumber();
+        this.points = new int[personNum.getNumber()];
     }
 
     public void setLine(int startPosition){
