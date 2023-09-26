@@ -50,13 +50,13 @@ public class Ladder {
 
     public void validationLadderPos(int num){
         if(num<0 || num>rows[0].getPersonNum()-1) {
-            throw new RuntimeException("사다리 값 범위를 벗어났습니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_RUN_POSITION.getMessage());
         }
     }
 
     public void validationDrawLine(int column){
         if(column<=0 || column>=height) {
-            throw new RuntimeException("사다리 라인을 그릴 수 없는 범위입니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_DRAW_POSITION_ROW.getMessage());
         }
     }
 

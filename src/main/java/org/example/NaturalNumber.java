@@ -20,7 +20,7 @@ public class NaturalNumber {
 
     private void validate(int number){
         if (!isNaturalNumber(number)){
-            throw new IllegalArgumentException("자연수가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NATURAL_NUM.getMessage());
         }
     }
 
