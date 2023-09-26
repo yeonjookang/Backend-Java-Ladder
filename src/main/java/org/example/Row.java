@@ -3,27 +3,47 @@ package org.example;
 import lombok.Getter;
 
 public class Row {
-    private int[] points;
+    private Node[] points;
     private int personNum;
 
     public Row(NaturalNumber personNum) {
         this.personNum=personNum.getNumber();
-        this.points = new int[personNum.getNumber()];
+        this.points = new Node[personNum.getNumber()];
+        for (int i=0;i<personNum.getNumber();i++){
+            points[i]=Node.of(Direction.NONE);
+        }
     }
 
-    public void setLine(int startPosition){
+    public void setLine(Position startPosition){
         validationRowPos(startPosition);
-        points[startPosition]=Direction.RIGHT.getValue();
-        points[startPosition+1]=Direction.LEFT.getValue();
+        setDirectionAtPosition(startPosition,Direction.RIGHT);
+        setDirectionAtPosition(startPosition.next(),Direction.LEFT);
     }
 
-    public void validationRowPos(int pos){
-        if(pos==personNum-1 || pos>personNum-1 || pos<0){
+    public void setDirectionAtPosition(Position startPosition,Direction direction){
+        points[startPosition.getPosition()]=Node.of(direction);
+    }
+
+    public void validationRowPos(Position pos){
+        if(pos.isSameWith(personNum-1) || pos.isBiggerThan(personNum-1)|| pos.isSmallerThan(0)){
             throw new IllegalArgumentException(ExceptionMessage.INVALID_DRAW_POSITION_COLUMN.getMessage());
         }
     }
 
-    public int[] getPoints() {
+    public void validatePosition(Position pos){
+        if(pos.isBiggerThan(personNum-1)|| pos.isSmallerThan(0)){
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_POSITION.getMessage());
+        }
+    }
+
+    public Position nextPosition(Position currentPosition){
+        validatePosition(currentPosition);
+        return points[currentPosition.getPosition()].move(currentPosition);
+    }
+
+
+
+    public Node[] getPoints() {
         return points;
     }
 

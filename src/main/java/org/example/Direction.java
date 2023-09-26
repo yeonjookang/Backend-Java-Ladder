@@ -19,4 +19,16 @@ public enum Direction {
     public int getValue(){
         return value;
     }
+
+    public boolean isRight(){
+        return this.value==Direction.RIGHT.value;
+    }
+
+    public boolean isNone(){
+        return this.value==Direction.NONE.value;
+    }
+
+    public boolean isLeft(){
+        return this.value==Direction.LEFT.value;
+    }
 }

@@ -9,35 +9,35 @@ class RowsTest {
 
     @Test
     public void Row_하나_생성(){
-        assertEquals(0,row.getPoints()[0]);
-        assertEquals(0,row.getPoints()[1]);
-        assertEquals(0,row.getPoints()[2]);
+        assertEquals(true,row.getPoints()[0].isNone());
+        assertEquals(true,row.getPoints()[1].isNone());
+        assertEquals(true,row.getPoints()[2].isNone());
     }
 
     @Test
     public void Row_선_추가(){
         //given
-        int startPos = 1;
+        Position startPos = Position.of(1);
 
         //when
         row.setLine(startPos);
 
         //then
-        assertEquals(Direction.RIGHT.getValue(),row.getPoints()[1]);
-        assertEquals(Direction.NONE.getValue(),row.getPoints()[0]);
-        assertEquals(Direction.LEFT.getValue(),row.getPoints()[2]);
+        assertEquals(true,row.getPoints()[1].isRight());
+        assertEquals(true,row.getPoints()[0].isNone());
+        assertEquals(true,row.getPoints()[2].isLeft());
     }
 
     @Test
     public void Row_선_추가_오류(){
         // 마지막 인덱스 오류
         assertThrows(RuntimeException.class, () -> {
-            row.setLine(2);
+            row.setLine(Position.of(2));
         });
 
         // 인덱스 범위 초과 오류
         assertThrows(RuntimeException.class, () -> {
-            row.setLine(3);
+            row.setLine(Position.of(3));
         });
     }
 

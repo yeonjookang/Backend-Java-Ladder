@@ -1,27 +1,48 @@
 package org.example;
 
 public class Position {
-    private int x;
-    private int y;
+    private int position;
 
-    public Position(int x) {
-        this.x = x;
-        this.y = 0;
+    public Position(int position) {
+        validationPosition(position);
+        this.position=position;
     }
 
-    public void setX(int x){
-        this.x=x;
+    private static void validationPosition(int position) {
+        if(!isPosition(position)){
+            throw new IllegalArgumentException("잘못된 사다리 위치입니다.");
+        }
     }
 
-    public void setY(int y){
-        this.y=y;
+    public static boolean isPosition(int position){
+        return position >=0;
     }
 
-    public int getX() {
-        return x;
+    public int getPosition(){
+        return position;
     }
 
-    public int getY() {
-        return y;
+    public static Position of(int position){
+        return new Position(position);
+    }
+
+    public Position next(){
+        return new Position(position+1);
+    }
+
+    public Position prev(){
+        return new Position(position-1);
+    }
+
+    public boolean isSmallerThan(int position){
+        return this.position<position;
+    }
+
+    public boolean isBiggerThan(int position){
+        return this.position>position;
+    }
+
+    public boolean isSameWith(int position){
+        return this.position==position;
     }
 }

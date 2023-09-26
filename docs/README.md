@@ -6,9 +6,11 @@
 2. ErrorMessage
 
 ## 2. 원시값 포장
+    :원시값을 포장함으로써, 데이터와 해당 데이터를 조작하는 메서드를 함꼐 묶어서 하나의 객체로 표현할 수 있다.
+    (getter를 최대한 사용안하는 방향으로)
 1. NumberOfRow, numberOfPerson -> NaturalNumber
    :NaturalNumber 클래스를 만들어서 게임에서 사용하는 행과 사람의 수를 이 클래스로 표현
-2. 배열 인덱스 -> Position 클래스 포장
+2. 배열 인덱스 -> Position 클래스 포장 (y좌표는 어차피 아래 방향으로만 내려가므로 position에는 x좌표 정보만 넣는다)
    :배열 인덱스를 직접 사용하지 말고, Position 클래스로 감싸서 사용  
 3. Row 클래스 내 int [] -> Node 배열로 변경
     :Node 클래스는 해당 위치에 사다리의 상태를 나타내는 데에 사용
